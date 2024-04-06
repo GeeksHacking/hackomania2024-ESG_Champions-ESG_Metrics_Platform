@@ -1,10 +1,12 @@
-import React from "react";
-import EnergyForm from "../components/Form";
+import { useState } from "react";
+import Form from "../components/Form";
 
 const ESGForm = () => {
+  const [formData, setFormData] = useState({});
+
   return (
     <div>
-      <Form />
+      <Form formData={formData} setFormData={setFormData} />
     </div>
   );
 };
