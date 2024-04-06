@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./navbar";
 import logo from "./logo.svg";
 import "./App.css";
-import ESGForm from "./components/ESGForm";
+import ESGForm from "./pages/ESGForm";
 import Dashboard from "./components/dashboard";
 import ESGReport from "./components/ESGReport";
 

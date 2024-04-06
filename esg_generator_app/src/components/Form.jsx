@@ -1,7 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Form({ formData, setFormData }) {
+  const [data, setData] = useState({});
+
   const [selectedOption, setSelectedOption] = useState("");
+
+  useEffect(() => {
+    const localStorageData = JSON.parse(localStorage.getItem("data"));
+    if (localStorageData) {
+      setData(localStorageData);
+    }
+  }, []);
+
+  console.log("DATA: ", data);
 
   const handleDropdownChange = (event) => {
     setSelectedOption(event.target.value);
