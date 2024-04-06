@@ -4,26 +4,24 @@ const ESGReport = () => {
   const [template, setTemplate] = useState("");
 
   useEffect(() => {
-    fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAWsblnruBZuSzN__qUqh8oK02qgVfj_ew",
-      {
-        body: {
-          contents: [
+    const prompt ={
+      contents: [
+        {
+          parts: [
             {
-              parts: [
-                {
-                  text: "can you take in these data and generate esg report like a pro?",
-                },
-              ],
+              text: "can you take in these data and generate esg report like a pro?",
             },
           ],
         },
+      ],
+    }
+    fetch(
+      "https://proxy.kwang-5a2.workers.dev",
+      {
+        body: JSON.stringify(prompt),
         headers: {
           apiKey: "AIzaSyAWsblnruBZuSzN__qUqh8oK02qgVfj_ew",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Methods": "POST, GET",
+          "Content-Type": "application/json"
         },
         method: "POST",
       }
