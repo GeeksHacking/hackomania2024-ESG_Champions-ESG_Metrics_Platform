@@ -415,7 +415,55 @@
           "type": "Non-recycled",
           "date": "Apr 2024",
           "amount": 200
-      }
+      },
+      {
+        "site": "Singapore",
+        "type": "Hazardous",
+        "date": "Mar 2023",
+        "amount": 50
+    },
+    {
+        "site": "Singapore",
+        "type": "Non-hazardous",
+        "date": "Mar 2023",
+        "amount": 75
+    },
+    {
+        "site": "Singapore",
+        "type": "Recycled",
+        "date": "Mar 2023",
+        "amount": 100
+    },
+    {
+        "site": "Singapore",
+        "type": "Non-recycled",
+        "date": "Mar 2023",
+        "amount": 200
+    },
+    {
+        "site": "Singapore",
+        "type": "Hazardous",
+        "date": "Apr 2023",
+        "amount": 100
+    },
+    {
+        "site": "Singapore",
+        "type": "Non-hazardous",
+        "date": "Apr 2023",
+        "amount": 50
+    },
+    {
+        "site": "Singapore",
+        "type": "Recycled",
+        "date": "Apr 2023",
+        "amount": 100
+    },
+    {
+        "site": "Singapore",
+        "type": "Non-recycled",
+        "date": "Apr 2023",
+        "amount": 200
+    }
   ],
   "economicOutput": [
       {
@@ -447,5 +495,11 @@
           "amount": 190
       }
   ],
-  "economicOutputUnit": "per economic output"
+  "economicOutputUnit": "per economic output",
+  "target": {
+    "carbon": -25,
+    "water": -10,
+    "waste": -10,
+    "energy": -5
+  }
 }
