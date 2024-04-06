@@ -33,12 +33,12 @@ const ESGReport = () => {
         console.log(error);
         alert("Error fetching template report");
       });
-  });
+  }, []);
 
   return (
     <div>
       <h1>ESGReport Template</h1>
-      <textarea value={template} />
+      <textarea value={template} onChange={(e) => setTemplate(e.target.value)} />
     </div>
   );
 };
