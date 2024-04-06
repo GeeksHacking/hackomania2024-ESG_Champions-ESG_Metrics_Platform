@@ -141,7 +141,12 @@ const ESGForm = () => {
             </option>
           ))}
       </select>
-      <input placeholder="Value"  value={selectedValue} />
+      <input
+  type="number"
+  placeholder="Value"
+  value={selectedValue}
+  onChange={(event) => setSelectedValue(event.target.value)}
+/>
       <button onClick={handleClick}>Update </button>
     </div>
   );
