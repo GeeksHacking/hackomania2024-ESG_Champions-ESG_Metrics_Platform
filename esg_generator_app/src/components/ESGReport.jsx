@@ -4,37 +4,7 @@ const ESGReport = () => {
   const [template, setTemplate] = useState("Loading...");
 
   useEffect(() => {
-<<<<<<< HEAD
-    const prompt ={
-      contents: [
-        {
-          parts: [
-            {
-              text: "can you take in these data and generate esg report like a pro?",
-            },
-          ],
-        },
-      ],
-    }
-    fetch(
-      "https://proxy.kwang-5a2.workers.dev",
-      {
-        body: JSON.stringify(prompt),
-        headers: {
-          apiKey: "AIzaSyAWsblnruBZuSzN__qUqh8oK02qgVfj_ew",
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-      }
-    )
-      .then((data) => setTemplate(data))
-      .catch((error) => {
-        console.log(error);
-        alert("Error fetching template report");
-      });
-=======
     generateReport(setTemplate);
->>>>>>> cc5fdb5a6d09cc2bb20cfbe3ded9555f9a016a3d
   }, []);
 
   return (
@@ -84,5 +54,7 @@ async function generateReport(setTemplate) {
       const report = data.candidates[0].content.parts[0].text;
       setTemplate(report);
     });
+  }).catch((error) => {
+    console.log(error);
   });
 }
