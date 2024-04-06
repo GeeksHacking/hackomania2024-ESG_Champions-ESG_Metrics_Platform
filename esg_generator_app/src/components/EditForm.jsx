@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Form({ formData, setFormData }) {
+function EditForm({ formData, setFormData }) {
   const [data, setData] = useState({});
 
   const [selectedOption, setSelectedOption] = useState("");
@@ -149,4 +149,4 @@ function Form({ formData, setFormData }) {
   );
 }
 
-export default Form;
+export default EditForm;

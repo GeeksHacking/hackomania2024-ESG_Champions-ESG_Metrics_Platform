@@ -6,7 +6,7 @@ const ESGForm = () => {
   const [selectedSite, setSelectedSite] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [selectedMonth, setSelectedMonth] = useState("");
-  
+
   const [selectedScope, setSelectedScope] = useState("");
   const [selectedValue, setSelectedValue] = useState(0);
 
@@ -16,6 +16,8 @@ const ESGForm = () => {
       setData(localStorageData);
     }
   }, []);
+
+  // console.log("DATA: ", data);
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -68,7 +70,9 @@ const ESGForm = () => {
   const getUniqueMonths = () => {
     const months = [];
     data[selectedType]?.forEach((entry) => {
-      const month = new Date(entry.date).toLocaleDateString("en-US", { month: "short" });
+      const month = new Date(entry.date).toLocaleDateString("en-US", {
+        month: "short",
+      });
       if (!months.includes(month)) {
         months.push(month);
       }
@@ -82,28 +86,30 @@ const ESGForm = () => {
       (entry) =>
         entry.site === selectedSite &&
         new Date(entry.date).getFullYear() === parseInt(selectedYear) &&
-        new Date(entry.date).toLocaleDateString("en-US", { month: "short" }) === selectedMonth &&
+        new Date(entry.date).toLocaleDateString("en-US", { month: "short" }) ===
+          selectedMonth &&
         entry.scope === selectedScope
     );
 
     if (entryToUpdate) {
-      setSelectedValue()
+      setSelectedValue();
       entryToUpdate.amount = parseFloat(selectedValue);
-      console.log(entryToUpdate);
+      console.log("entry to update: ", entryToUpdate);
       localStorage.setItem("data", JSON.stringify(updatedChanges));
       setData(updatedChanges);
     }
+
+    console.log("form: ", data);
   };
-  
 
   return (
-    <div className="bg-blue-300">
-      Input Entry
+    <div className="bg-blue-300 flex flex-col justify-center align-center">
+      <h1>Input Entry</h1>
       <select value={selectedType} onChange={handleTypeChange}>
-    <option value="carbon">carbon</option>
-    <option value="energy">energy</option>
-    <option value="water">water</option>
-    <option value="waste">waste</option>
+        <option value="carbon">carbon</option>
+        <option value="energy">energy</option>
+        <option value="water">water</option>
+        <option value="waste">waste</option>
       </select>
       <select value={selectedSite} onChange={handleSiteChange}>
         <option value="">Select Site</option>
@@ -142,11 +148,11 @@ const ESGForm = () => {
           ))}
       </select>
       <input
-  type="number"
-  placeholder="Value"
-  value={selectedValue}
-  onChange={(event) => setSelectedValue(event.target.value)}
-/>
+        type="number"
+        placeholder="Value"
+        value={selectedValue}
+        onChange={(event) => setSelectedValue(event.target.value)}
+      />
       <button onClick={handleClick}>Update </button>
     </div>
   );

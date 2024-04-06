@@ -1,18 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function Form({ formData, setFormData }) {
-  const [data, setData] = useState({});
-
+function AddForm() {
+  const [formData, setFormData] = useState({});
   const [selectedOption, setSelectedOption] = useState("");
-
-  useEffect(() => {
-    const localStorageData = JSON.parse(localStorage.getItem("data"));
-    if (localStorageData) {
-      setData(localStorageData);
-    }
-  }, []);
-
-  console.log("DATA: ", data);
 
   const handleDropdownChange = (event) => {
     setSelectedOption(event.target.value);
@@ -20,7 +10,34 @@ function Form({ formData, setFormData }) {
 
   function submitHandler(e) {
     e.preventDefault();
-    console.log("Submitted: ", formData);
+
+    const existingData = JSON.parse(localStorage.getItem("data")) || {};
+    const selectedOptionKey = selectedOption.toLowerCase();
+
+    // check if key exists
+    existingData[selectedOptionKey] = existingData[selectedOptionKey] || [];
+
+    // Convert the input date string to a Date object
+    const selectedDate = new Date(formData.date);
+
+    // // Extract the month and year from the Date object
+    const month = selectedDate.toLocaleString("en-US", {
+      month: "short",
+    });
+    const year = selectedDate.getFullYear();
+
+    // // Format the date as "MMM YYYY"
+    const formattedDate = `${month} ${year}`;
+
+    formData.date = formattedDate;
+
+    existingData[selectedOptionKey].push(formData);
+
+    localStorage.setItem("data", JSON.stringify(existingData));
+
+    setFormData({});
+
+    console.log(existingData);
   }
 
   return (
@@ -30,32 +47,35 @@ function Form({ formData, setFormData }) {
           <option value="" disabled>
             select form type
           </option>
-          <option>Carbon</option>
-          <option>Energy</option>
-          <option>Water</option>
-          <option>Waste</option>
+          <option value="carbon">Carbon</option>
+          <option value="energy">Energy</option>
+          <option value="water">Water</option>
+          <option value="waste">Waste</option>
+          <option value="econ">Economic Output</option>
         </select>
       </div>
       <form
         onSubmit={submitHandler}
         className="flex flex-col w-full max-w-sm mx-auto space-y-4 p-4 bg-white shadow-md rounded-md"
       >
-        <h1>{selectedOption || "Select form type"}</h1>
-        <label className="text-gray-700">Site</label>
-        <input
-          className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-          type="text"
-          value={formData.site || ""}
-          placeholder="Site"
-          required
-          onChange={(e) => {
-            setFormData({
-              ...formData,
-              site: e.target.value,
-            });
-            console.log("Site: ", formData.site);
-          }}
-        />
+        {selectedOption === "Economic Output" ? null : (
+          <>
+            <label className="text-gray-700">Site</label>
+            <input
+              className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+              type="text"
+              value={formData.site || ""}
+              placeholder="Site"
+              required
+              onChange={(e) => {
+                setFormData({
+                  ...formData,
+                  site: e.target.value,
+                });
+              }}
+            />
+          </>
+        )}
 
         {selectedOption === "Carbon" && (
           <>
@@ -69,7 +89,6 @@ function Form({ formData, setFormData }) {
                   ...formData,
                   scope: e.target.value,
                 });
-                console.log("scope: ", formData.scope);
               }}
             >
               <option value="" disabled>
@@ -99,9 +118,8 @@ function Form({ formData, setFormData }) {
               <option value="" disabled>
                 Select a waste type
               </option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+              <option>Recycled</option>
+              <option>Hazardous</option>
             </select>
           </>
         )}
@@ -112,6 +130,7 @@ function Form({ formData, setFormData }) {
           value={formData.date || ""}
           type="date"
           required
+          placeholder="date"
           onChange={(e) => {
             setFormData({
               ...formData,
@@ -132,8 +151,7 @@ function Form({ formData, setFormData }) {
           onChange={(e) => {
             setFormData({
               ...formData,
-              amount: e.target.value,
-              // amount: parseFloat(parseFloat(e.target.value).toFixed(2)), // toFixed returns a string
+              amount: parseFloat(e.target.value),
             });
           }}
         />
@@ -141,6 +159,7 @@ function Form({ formData, setFormData }) {
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           type="submit"
+          disabled={selectedOption === null}
         >
           Add
         </button>
@@ -149,4 +168,4 @@ function Form({ formData, setFormData }) {
   );
 }
 
-export default Form;
+export default AddForm;
