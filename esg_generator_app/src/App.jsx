@@ -8,6 +8,7 @@ import Navbar from './navbar';
 import logo from "./logo.svg";
 import "./App.css";
 import ESGForm from "./components/ESGForm";
+import Dashboard from "./components/dashboard";
 import ESGReport from "./components/ESGReport";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <Navbar/>
           <Routes>
             <Route path='/'></Route>
-            <Route path='/dashboard'></Route>
+            <Route path='/dashboard' element={<Dashboard/>}></Route>
             <Route path='/form' element={<ESGForm/>}></Route>
             <Route path='/report' element={<ESGReport/>}></Route>
           </Routes>
