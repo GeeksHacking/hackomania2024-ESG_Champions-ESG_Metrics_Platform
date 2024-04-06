@@ -1,11 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Navbar from "./navbar";
-import logo from "./logo.svg";
 import "./App.css";
-import ESGForm from "./pages/ESGForm";
 import Dashboard from "./components/dashboard";
 import ESGReport from "./components/ESGReport";
+import AddForm from "./components/AddForm";
 
 function App() {
   initLocalData();
@@ -17,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/"></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
-            <Route path="/form" element={<ESGForm />}></Route>
+            <Route path="/form" element={<AddForm />}></Route>
             <Route path="/report" element={<ESGReport />}></Route>
           </Routes>
         </Router>

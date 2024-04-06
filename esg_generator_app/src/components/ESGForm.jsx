@@ -17,7 +17,7 @@ const ESGForm = () => {
     }
   }, []);
 
-  console.log("DATA: ", data);
+  // console.log("DATA: ", data);
 
   const handleTypeChange = (event) => {
     setSelectedType(event.target.value);
@@ -94,10 +94,12 @@ const ESGForm = () => {
     if (entryToUpdate) {
       setSelectedValue();
       entryToUpdate.amount = parseFloat(selectedValue);
-      console.log(entryToUpdate);
+      console.log("entry to update: ", entryToUpdate);
       localStorage.setItem("data", JSON.stringify(updatedChanges));
       setData(updatedChanges);
     }
+
+    console.log("form: ", data);
   };
 
   return (
