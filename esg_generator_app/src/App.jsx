@@ -5,6 +5,7 @@ import "./App.css";
 import Dashboard from "./components/dashboard";
 import ESGReport from "./components/ESGReport";
 import AddForm from "./components/AddForm";
+import StickyNavBar from "./components/StickyNavBar";
 
 function App() {
   initLocalData();
@@ -12,13 +13,15 @@ function App() {
     <div className="app">
       <div className="main">
         <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/"></Route>
-            <Route path="/dashboard" element={<Dashboard />}></Route>
-            <Route path="/form" element={<AddForm />}></Route>
-            <Route path="/report" element={<ESGReport />}></Route>
-          </Routes>
+          <StickyNavBar />
+          <div className="pt-20">
+            <Routes>
+              <Route path="/"></Route>
+              <Route path="/dashboard" element={<Dashboard />}></Route>
+              <Route path="/form" element={<AddForm />}></Route>
+              <Route path="/report" element={<ESGReport />}></Route>
+            </Routes>
+          </div>
         </Router>
       </div>
     </div>
