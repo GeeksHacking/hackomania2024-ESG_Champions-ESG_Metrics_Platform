@@ -14,9 +14,13 @@ function App() {
 export default App;
 
 function initLocalData() {
-  const data = localStorage.getItem("data");
-  if (data === null) {
+  const data = JSON.parse(localStorage.getItem("data"));
+  console.log(data);
+  if (localStorage.data == null) {
     let data = require("./mockData.json");
     localStorage.setItem("data", JSON.stringify(data));
   }
 }
+
+
+
