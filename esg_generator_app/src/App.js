@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  initLocalData();
   return (
     <div className="App">
       <header className="App-header">
@@ -23,3 +24,11 @@ function App() {
 }
 
 export default App;
+
+function initLocalData() {
+  const data = localStorage.getItem("data");
+  if (data === null) {
+    let data = require("./mockData.json");
+    localStorage.setItem("data", JSON.stringify(data));
+  }
+}
