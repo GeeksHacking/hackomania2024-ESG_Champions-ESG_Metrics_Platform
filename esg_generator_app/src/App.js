@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import ESGForm from "./components/ESGForm";
+import ESGForm from "./components/Form";
 
 function App() {
   return (
