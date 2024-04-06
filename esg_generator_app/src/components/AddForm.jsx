@@ -11,21 +11,33 @@ function AddForm() {
   function submitHandler(e) {
     e.preventDefault();
 
-    // Retrieve existing data from local storage
     const existingData = JSON.parse(localStorage.getItem("data")) || {};
-
     const selectedOptionKey = selectedOption.toLowerCase();
 
-    // console.log("existing form data: ", existingData);
+    // check if key exists
     existingData[selectedOptionKey] = existingData[selectedOptionKey] || [];
+
+    // Convert the input date string to a Date object
+    const selectedDate = new Date(formData.date);
+
+    // // Extract the month and year from the Date object
+    const month = selectedDate.toLocaleString("en-US", {
+      month: "short",
+    });
+    const year = selectedDate.getFullYear();
+
+    // // Format the date as "MMM YYYY"
+    const formattedDate = `${month} ${year}`;
+
+    formData.date = formattedDate;
+
     existingData[selectedOptionKey].push(formData);
 
     localStorage.setItem("data", JSON.stringify(existingData));
 
-    // console.log("New form data added:", existingData);
-
-    // clear form data after submission
     setFormData({});
+
+    console.log(existingData);
   }
 
   return (
@@ -138,8 +150,7 @@ function AddForm() {
           onChange={(e) => {
             setFormData({
               ...formData,
-              amount: e.target.value,
-              // amount: parseFloat(parseFloat(e.target.value).toFixed(2)), // toFixed returns a string
+              amount: parseFloat(e.target.value),
             });
           }}
         />
