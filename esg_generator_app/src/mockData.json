@@ -3,25 +3,25 @@
     {
       "site": "Singapore",
       "scope": "Scope 1",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 200
     },
     {
       "site": "Singapore",
       "scope": "Scope 1",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
       "scope": "Scope 2",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
       "scope": "Scope 2",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 50
     }
   ],
@@ -29,12 +29,12 @@
   "energy": [
     {
       "site": "Singapore",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 200
     }
   ],
@@ -42,12 +42,12 @@
   "water": [
     {
       "site": "Singapore",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 200
     }
   ],
@@ -56,60 +56,60 @@
     {
       "site": "Singapore",
       "type": "Hazardous",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
       "type": "Non-hazardous",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
       "type": "Recycled",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
       "type": "Non-recycled",
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
       "site": "Singapore",
       "type": "Hazardous",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 200
     },
     {
       "site": "Singapore",
       "type": "Non-hazardous",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 200
     },
     {
       "site": "Singapore",
       "type": "Recycled",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 200
     },
     {
       "site": "Singapore",
       "type": "Non-recycled",
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 200
     }
   ],
 
   "economicOutput": [
     {
-      "date": "6 Mar 2024",
+      "date": "Mar 2024",
       "amount": 100
     },
     {
-      "date": "6 Apr 2024",
+      "date": "Apr 2024",
       "amount": 200
     }
   ],
