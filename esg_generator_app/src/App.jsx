@@ -1,10 +1,6 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import Navbar from './navbar';
+import Navbar from "./navbar";
 import logo from "./logo.svg";
 import "./App.css";
 import ESGForm from "./components/ESGForm";
@@ -17,12 +13,12 @@ function App() {
     <div className="app">
       <div className="main">
         <Router>
-        <Navbar/>
+          <Navbar />
           <Routes>
-            <Route path='/'></Route>
-            <Route path='/dashboard' element={<Dashboard/>}></Route>
-            <Route path='/form' element={<ESGForm/>}></Route>
-            <Route path='/report' element={<ESGReport/>}></Route>
+            <Route path="/"></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/form" element={<ESGForm />}></Route>
+            <Route path="/report" element={<ESGReport />}></Route>
           </Routes>
         </Router>
       </div>
@@ -31,7 +27,6 @@ function App() {
 }
 
 export default App;
-
 
 function initLocalData() {
   const data = localStorage.getItem("data");
