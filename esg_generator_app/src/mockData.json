@@ -1,118 +1,451 @@
 {
   "carbon": [
-    {
-      "site": "Singapore",
-      "scope": "Scope 1",
-      "date": "Mar 2024",
-      "amount": 200
-    },
-    {
-      "site": "Singapore",
-      "scope": "Scope 1",
-      "date": "Apr 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "scope": "Scope 2",
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "scope": "Scope 2",
-      "date": "Apr 2024",
-      "amount": 50
-    }
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Mar 2024",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Apr 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 2",
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 2",
+          "date": "Apr 2024",
+          "amount": 50
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Mar 2024",
+          "amount": 142
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Feb 2024",
+          "amount": 83
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 1",
+          "date": "Feb 2024",
+          "amount": 121
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 1",
+          "date": "Feb 2024",
+          "amount": 93
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 2",
+          "date": "Feb 2024",
+          "amount": 77
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 2",
+          "date": "Feb 2024",
+          "amount": 88
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 2",
+          "date": "Feb 2024",
+          "amount": 65
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Jan 2024",
+          "amount": 107
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 1",
+          "date": "Jan 2024",
+          "amount": 115
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 1",
+          "date": "Jan 2024",
+          "amount": 97
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 2",
+          "date": "Jan 2024",
+          "amount": 90
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 2",
+          "date": "Jan 2024",
+          "amount": 104
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 2",
+          "date": "Jan 2024",
+          "amount": 68
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Dec 2023",
+          "amount": 132
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 1",
+          "date": "Dec 2023",
+          "amount": 120
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 1",
+          "date": "Dec 2023",
+          "amount": 110
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 2",
+          "date": "Dec 2023",
+          "amount": 85
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 2",
+          "date": "Dec 2023",
+          "amount": 92
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 2",
+          "date": "Dec 2023",
+          "amount": 74
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Nov 2023",
+          "amount": 119
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 1",
+          "date": "Nov 2023",
+          "amount": 127
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 1",
+          "date": "Nov 2023",
+          "amount": 99
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 2",
+          "date": "Nov 2023",
+          "amount": 81
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 2",
+          "date": "Nov 2023",
+          "amount": 95
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 2",
+          "date": "Nov 2023",
+          "amount": 76
+      },
+      {
+          "site": "Singapore",
+          "scope": "Scope 1",
+          "date": "Oct 2023",
+          "amount": 124
+      },
+      {
+          "site": "Malaysia",
+          "scope": "Scope 1",
+          "date": "Oct 2023",
+          "amount": 130
+      },
+      {
+          "site": "Thailand",
+          "scope": "Scope 1",
+          "date": "Oct 2023",
+          "amount": 102
+      }
   ],
-
   "energy": [
-    {
-      "site": "Singapore",
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "date": "Apr 2024",
-      "amount": 200
-    }
+      {
+          "site": "Singapore",
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "date": "Apr 2024",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "date": "Feb 2024",
+          "amount": 150
+      },
+      {
+          "site": "Malaysia",
+          "date": "Feb 2024",
+          "amount": 120
+      },
+      {
+          "site": "Thailand",
+          "date": "Feb 2024",
+          "amount": 130
+      },
+      {
+          "site": "Singapore",
+          "date": "Jan 2024",
+          "amount": 140
+      },
+      {
+          "site": "Malaysia",
+          "date": "Jan 2024",
+          "amount": 160
+      },
+      {
+          "site": "Thailand",
+          "date": "Jan 2024",
+          "amount": 170
+      },
+      {
+          "site": "Singapore",
+          "date": "Dec 2023",
+          "amount": 180
+      },
+      {
+          "site": "Malaysia",
+          "date": "Dec 2023",
+          "amount": 190
+      },
+      {
+          "site": "Thailand",
+          "date": "Dec 2023",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "date": "Nov 2023",
+          "amount": 210
+      },
+      {
+          "site": "Malaysia",
+          "date": "Nov 2023",
+          "amount": 220
+      },
+      {
+          "site": "Thailand",
+          "date": "Nov 2023",
+          "amount": 230
+      },
+      {
+          "site": "Singapore",
+          "date": "Oct 2023",
+          "amount": 240
+      },
+      {
+          "site": "Malaysia",
+          "date": "Oct 2023",
+          "amount": 250
+      },
+      {
+          "site": "Thailand",
+          "date": "Oct 2023",
+          "amount": 260
+      }
   ],
-
   "water": [
-    {
-      "site": "Singapore",
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "date": "Apr 2024",
-      "amount": 200
-    }
+      {
+          "site": "Singapore",
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "date": "Apr 2024",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "date": "Feb 2024",
+          "amount": 150
+      },
+      {
+          "site": "Malaysia",
+          "date": "Feb 2024",
+          "amount": 120
+      },
+      {
+          "site": "Thailand",
+          "date": "Feb 2024",
+          "amount": 130
+      },
+      {
+          "site": "Singapore",
+          "date": "Jan 2024",
+          "amount": 140
+      },
+      {
+          "site": "Malaysia",
+          "date": "Jan 2024",
+          "amount": 160
+      },
+      {
+          "site": "Thailand",
+          "date": "Jan 2024",
+          "amount": 170
+      },
+      {
+          "site": "Singapore",
+          "date": "Dec 2023",
+          "amount": 180
+      },
+      {
+          "site": "Malaysia",
+          "date": "Dec 2023",
+          "amount": 190
+      },
+      {
+          "site": "Thailand",
+          "date": "Dec 2023",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "date": "Nov 2023",
+          "amount": 210
+      },
+      {
+          "site": "Malaysia",
+          "date": "Nov 2023",
+          "amount": 220
+      },
+      {
+          "site": "Thailand",
+          "date": "Nov 2023",
+          "amount": 230
+      },
+      {
+          "site": "Singapore",
+          "date": "Oct 2023",
+          "amount": 240
+      },
+      {
+          "site": "Malaysia",
+          "date": "Oct 2023",
+          "amount": 250
+      },
+      {
+          "site": "Thailand",
+          "date": "Oct 2023",
+          "amount": 260
+      }
   ],
-
   "waste": [
-    {
-      "site": "Singapore",
-      "type": "Hazardous",
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "type": "Non-hazardous",
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "type": "Recycled",
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "type": "Non-recycled",
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "site": "Singapore",
-      "type": "Hazardous",
-      "date": "Apr 2024",
-      "amount": 200
-    },
-    {
-      "site": "Singapore",
-      "type": "Non-hazardous",
-      "date": "Apr 2024",
-      "amount": 200
-    },
-    {
-      "site": "Singapore",
-      "type": "Recycled",
-      "date": "Apr 2024",
-      "amount": 200
-    },
-    {
-      "site": "Singapore",
-      "type": "Non-recycled",
-      "date": "Apr 2024",
-      "amount": 200
-    }
+      {
+          "site": "Singapore",
+          "type": "Hazardous",
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "type": "Non-hazardous",
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "type": "Recycled",
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "type": "Non-recycled",
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "site": "Singapore",
+          "type": "Hazardous",
+          "date": "Apr 2024",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "type": "Non-hazardous",
+          "date": "Apr 2024",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "type": "Recycled",
+          "date": "Apr 2024",
+          "amount": 200
+      },
+      {
+          "site": "Singapore",
+          "type": "Non-recycled",
+          "date": "Apr 2024",
+          "amount": 200
+      }
   ],
-
   "economicOutput": [
-    {
-      "date": "Mar 2024",
-      "amount": 100
-    },
-    {
-      "date": "Apr 2024",
-      "amount": 200
-    }
+      {
+          "date": "Mar 2024",
+          "amount": 100
+      },
+      {
+          "date": "Apr 2024",
+          "amount": 200
+      },
+      {
+          "date": "Feb 2024",
+          "amount": 150
+      },
+      {
+          "date": "Jan 2024",
+          "amount": 160
+      },
+      {
+          "date": "Dec 2023",
+          "amount": 170
+      },
+      {
+          "date": "Nov 2023",
+          "amount": 180
+      },
+      {
+          "date": "Oct 2023",
+          "amount": 190
+      }
   ],
-
   "economicOutputUnit": "per economic output"
 }
