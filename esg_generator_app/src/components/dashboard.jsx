@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-
+import { Chart as ChartJS, ArcElement, Tooltip, Legend,
+  CategoryScale, LinearScale, PointElement, LineElement, Title,
+  BarElement
+ } from 'chart.js';
+import { Pie, Line, Bar } from 'react-chartjs-2';
+import Select from 'react-select';
 
 const Dashboard = () => {
     // first visualisation
     
     return(
-        <div className="bg-blue-300">
-      Input Entry
-      {/* Pass handleClick, not the result of calling handleClick */}
-      <input placeholder="Site / prob dropdown is better?" />
-      <input placeholder="Date" />
-      <input placeholder="Value" />
-    </div>
+      <h1>ESG Interative Dashboard</h1>
     )
 }
 
