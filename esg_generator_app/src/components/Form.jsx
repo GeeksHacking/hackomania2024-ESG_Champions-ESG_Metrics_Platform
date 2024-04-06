@@ -37,26 +37,55 @@ function Form() {
           // }}
         />
 
-        <label className="text-gray-700">Scope</label>
-        <select
-          className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-          // value={formData.type || ""}
-          required
-          // onChange={(e) => {
-          //   setFormData({
-          //     ...formData,
-          //     type: e.target.value,
-          //     category: "",
-          //   });
-          // }}
-        >
-          <option value="" disabled>
-            Select a scope
-          </option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
+        {selectedOption === "Carbon" && (
+          <>
+            <label className="text-gray-700">Scope</label>
+            <select
+              className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+              // value={formData.type || ""}
+              required
+              // onChange={(e) => {
+              //   setFormData({
+              //     ...formData,
+              //     type: e.target.value,
+              //     category: "",
+              //   });
+              // }}
+            >
+              <option value="" disabled>
+                Select a scope
+              </option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </>
+        )}
+
+        {selectedOption === "Waste" && (
+          <>
+            <label className="text-gray-700">Type</label>
+            <select
+              className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+              // value={formData.type || ""}
+              required
+              // onChange={(e) => {
+              //   setFormData({
+              //     ...formData,
+              //     type: e.target.value,
+              //     category: "",
+              //   });
+              // }}
+            >
+              <option value="" disabled>
+                Select a waste type
+              </option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </>
+        )}
 
         <label className="text-gray-700">Date</label>
         <input
