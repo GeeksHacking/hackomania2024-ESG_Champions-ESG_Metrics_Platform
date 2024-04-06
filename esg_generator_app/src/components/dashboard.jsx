@@ -5,6 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend,
  } from 'chart.js';
 import { Pie, Line, Bar } from 'react-chartjs-2';
 import Select from 'react-select';
+import DataTable from 'react-data-table-component';
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title, BarElement);
 
@@ -17,6 +18,9 @@ const Dashboard = () => {
     const [topicLabel, setTopicLabel] = useState('Green House Gas Emmission')
     const [locationData, setLocationData] = useState();
     const [periodicData, setPeriodicData] = useState();
+    const [economicOutput, setEconomicOutput] = useState();
+    const [longData, setLongData] = useState();
+    const [dtColumns, setDTColumns] = useState();
 
     const pieOptions = {
       responsive: true,
@@ -31,29 +35,44 @@ const Dashboard = () => {
       },
       };
     
-      const lineOptions = {
-        responsive: true,
-        plugins: {
-          legend: {
-            display:false
-          },
-          title: {
-            display: true,
-            text: "Monthly " + topic,
-          },
+    const lineConsumptionOptions = {
+      responsive: true,
+      plugins: {
+        legend: {
+          display:false
         },
+        title: {
+          display: true,
+          text: "Monthly " + topicLabel,
+        },
+      },
       };
+    
+    const lineEOOptions = {
+      responsive: true,
+      plugins: {
+        legend: {
+          display:false
+        },
+        title: {
+          display: true,
+          text: "Monthly Economic Ouput",
+        },
+      },
+      };
+
     const topicList = [
       { "label": "Green House Gas Emmission", "value": "carbon" },
       { "label": "Water Consumption", "value": "water" },
       { "label": "Waste Generation", "value": "waste" },
       { "label": "Energy Consumption", "value": "energy" },
-    ];
+      ];
 
     function handleSelectTopic(topic){
       setTopic(topic.value);
       setTopicLabel(topic.label);
-  }
+      }
+
     function getLocationData(){
       const topicData = data[topic];
       var filteredData = [];
@@ -97,10 +116,12 @@ const Dashboard = () => {
         ],
         });
     }
-    }
+      }
 
     function getPeriodicData(){
       const topicData = data[topic];
+      const eoData = data["economicOutput"]
+      
       var filteredData = [];
       topicData.reduce(function(res, value) {
         if (!res[value.date]) {
@@ -111,7 +132,6 @@ const Dashboard = () => {
         return res;
       }, {});
       filteredData =filteredData.reduce((obj, item) => Object.assign(obj, { [Date.parse(item.date)]: item.amount }), {});
-      console.log(filteredData);
       filteredData = Object.keys(filteredData).sort().reduce(
             (obj, key) => { 
               obj[key] = filteredData[key]; 
@@ -120,45 +140,125 @@ const Dashboard = () => {
             {}
           );
       Object.keys(filteredData).forEach(key => {
-
             filteredData[`${new Date(parseInt(key)).toLocaleString('default', { month: 'short' })}-${new Date(parseInt(key)).getFullYear().toString()}`] = filteredData[key];
             delete filteredData[key];
         });
-      console.log(filteredData);
-      setPeriodicData({
+        setPeriodicData({
           labels:Object.keys(filteredData),
           datasets:[{
-          label: "Monthly " + topic,
+          label: "Monthly " + topicLabel,
           data: filteredData,
           borderColor: 'rgb(255, 99, 132)',
           backgroundColor: 'rgba(255, 99, 132, 0.5)'
           }]
       });
-  }
+      
+        var eoSortedData = [];
+        eoData.reduce(function(res, value) {
+          if (!res[value.date]) {
+            res[value.date] = { date: value.date, amount: 0 };
+            eoSortedData.push(res[value.date])
+          }
+          res[value.date].amount += value.amount;
+          return res;
+        }, {});
+        eoSortedData =eoSortedData.reduce((obj, item) => Object.assign(obj, { [Date.parse(item.date)]: item.amount }), {});
+        eoSortedData = Object.keys(eoSortedData).sort().reduce(
+              (obj, key) => { 
+                obj[key] = eoSortedData[key]; 
+                return obj;
+              }, 
+              {}
+            );
+        Object.keys(eoSortedData).forEach(key => {
+          eoSortedData[`${new Date(parseInt(key)).toLocaleString('default', { month: 'short' })}-${new Date(parseInt(key)).getFullYear().toString()}`] = eoSortedData[key];
+              delete eoSortedData[key];
+          });
 
+      setEconomicOutput({
+        labels:Object.keys(eoSortedData),
+          datasets:[{
+          label: "Monthly Economic Output",
+          data: eoSortedData,
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)'
+          }]
+      })
+      }
 
-  function handlePrint(){
-    console.log(topic);
-    console.log(locationData);
-  }
+    function getLongData(){
+      let topicData = data[topic];
+      topicData.forEach((item) => {
+        item["date_num"] = new Date(Date.parse(item["date"])).getFullYear().toString() + "/" +("0"+(new Date(Date.parse(item["date"])).getMonth()+ 1).toString()).slice(-2);
+      });
+      let columns = [
+        {
+          name: 'Date (YYYY-MM)',
+          selector: row => row.date_num,
+          sortable: true,
+        },
+        {
+          name: 'Site',
+          selector: row => row.site,
+          sortable: true,
+        },
+        
+      ];
+      if (topic === "carbon"){
+        columns.push({
+          name: 'Scope',
+          selector: row => row.scope,
+          sortable: true,
+        });
+      }
+      if (topic === "waste"){
+        columns.push({
+          name: 'Type',
+          selector: row => row.type,
+          sortable: true,
+        });
+      }
+      columns.push({
+        name: 'Value',
+        selector: row => row.amount,
+        sortable: true,
+      });
+      setLongData(topicData);
+      setDTColumns(columns);
+      }
 
-  useEffect(() => {
-    getLocationData();
-    getPeriodicData();
-}, [topic]);
+    useEffect(() => {
+      getLocationData();
+      getPeriodicData();
+      getLongData();
+      }, [topic]);
 
     return(
-      <div>
-        <h1>ESG Interative Dashboard</h1>
-        <Select
-            defaultValue={topicList[0]}
-            isSearchable={true}
-            options={topicList}
-            onChange={handleSelectTopic}
-        />
-        {locationData?<Pie options={pieOptions} data={locationData}/>: 'Sorry, data is not available for this filter, please try something else!'}
-        {periodicData? <Line options={lineOptions} data={periodicData} />: 'Sorry, data is not available for this filter, please try something else!'}
-        <button className="bg-blue-500 text-white" onClick={() => {handlePrint();}}>Print</button>
+      <div className='mx-10'>
+        <div className='w-1/5'>
+          <Select
+              defaultValue={topicList[0]}
+              isSearchable={true}
+              options={topicList}
+              onChange={handleSelectTopic}
+          />
+        </div>
+        <div class="inline-grid grid-cols-3 w-fit h-1/2">
+          <div >
+            {locationData?<Pie options={pieOptions} data={locationData}/>: 'Sorry, data is not available for this filter, please try something else!'}
+          </div>
+        <div>
+        {periodicData? <Line options={lineConsumptionOptions} data={periodicData} />: 'Sorry, data is not available for this filter, please try something else!'}
+        {periodicData? <Line options={lineEOOptions} data={economicOutput} />: 'Sorry, data is not available for this filter, please try something else!'}
+        </div>
+        <div>
+          <DataTable
+                  columns={dtColumns}
+                  data={longData}
+                  pagination
+                />
+        </div>
+      </div>
       </div>
       
     )
