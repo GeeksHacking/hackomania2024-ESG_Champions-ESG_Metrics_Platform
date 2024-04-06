@@ -1,0 +1,34 @@
+{
+  "carbon": {
+    "site": "",
+    "scope": "",
+    "date": "",
+    "amount": 0
+  },
+
+  "energy": {
+    "site": "",
+    "date": "",
+    "amount": 0
+  },
+
+  "water": {
+    "site": "",
+    "date": "",
+    "amount": 0
+  },
+
+  "waste": {
+    "site": "",
+    "type": "",
+    "date": "",
+    "amount": 0
+  },
+
+  "economicOutput": {
+    "date": "",
+    "amount": 0
+  },
+
+  "economicOutputUnit": ""
+}
