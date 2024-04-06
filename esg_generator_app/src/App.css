@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+input{
+    display:block;
+    padding:3px 6px; 
+    margin: 4px;
+  }
+  
