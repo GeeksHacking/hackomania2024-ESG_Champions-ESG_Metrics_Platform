@@ -47,11 +47,11 @@ function AddForm() {
           <option value="" disabled>
             select form type
           </option>
-          <option>Carbon</option>
-          <option>Energy</option>
-          <option>Water</option>
-          <option>Waste</option>
-          <option>Economic Output</option>
+          <option value="carbon">Carbon</option>
+          <option value="energy">Energy</option>
+          <option value="water">Water</option>
+          <option value="waste">Waste</option>
+          <option value="econ">Economic Output</option>
         </select>
       </div>
       <form
@@ -130,6 +130,7 @@ function AddForm() {
           value={formData.date || ""}
           type="date"
           required
+          placeholder="date"
           onChange={(e) => {
             setFormData({
               ...formData,
@@ -158,6 +159,7 @@ function AddForm() {
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           type="submit"
+          disabled={selectedOption === null}
         >
           Add
         </button>
