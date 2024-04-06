@@ -4,7 +4,46 @@ const ESGReport = () => {
   const [template, setTemplate] = useState("Loading...");
 
   useEffect(() => {
-    generateReport(setTemplate);
+
+    const prompt ={
+      contents: [
+        {
+          parts: [
+            {
+              text: "can you take in these data and generate esg report like a pro?",
+            },
+          ],
+        },
+      ],
+    }
+    fetch(
+      "https://proxy.kwang-5a2.workers.dev",
+      {
+        body: JSON.stringify(prompt),
+        headers: {
+          apiKey: "AIzaSyAWsblnruBZuSzN__qUqh8oK02qgVfj_ew",
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+      }
+    )
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      // Process your data here
+      if(data.candidates){
+        setTemplate(data.candidates[0].content.parts[0].text);
+      }
+    })
+    .catch(error => {
+      console.error('There was a problem with your fetch operation:', error);
+    });
+ //   generateReport(setTemplate);
   }, []);
 
   return (
@@ -22,37 +61,3 @@ const ESGReport = () => {
 };
 
 export default ESGReport;
-
-async function generateReport(setTemplate) {
-  const data = localStorage.getItem("data");
-  const bodyData = JSON.stringify({
-    contents: [
-      {
-        parts: [
-          {
-            text: `can you take in the following data and generate esg report like a pro? \n${data}`,
-          },
-        ],
-      },
-    ],
-  });
-  await fetch(
-    "http://localhost:8010/proxy/v1beta/models/gemini-pro:generateContent?key=AIzaSyAWsblnruBZuSzN__qUqh8oK02qgVfj_ew",
-    {
-      body: bodyData,
-      headers: {
-        apiKey: "AIzaSyAWsblnruBZuSzN__qUqh8oK02qgVfj_ew",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": true,
-        "Access-Control-Allow-Methods": ["POST, GET"],
-      },
-      method: "POST",
-    }
-  ).then((response) => {
-    response.json().then((data) => {
-      const report = data.candidates[0].content.parts[0].text;
-      setTemplate(report);
-    });
-  });
-}
