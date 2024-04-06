@@ -3,9 +3,14 @@
 @tailwind utilities;
 
 
-input{
+input, select{
     display:block;
     padding:3px 6px; 
     margin: 4px;
   }
+
+button{
+    margin:4px; 
+    text-align:center;
+}
   
