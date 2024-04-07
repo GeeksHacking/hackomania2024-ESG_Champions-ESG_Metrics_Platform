@@ -7,6 +7,11 @@ import { Pie, Line, Bar } from 'react-chartjs-2';
 import Select from 'react-select';
 import DataTable from 'react-data-table-component';
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointElement, LineElement, Title, BarElement);
 
 const Dashboard = () => {
@@ -21,6 +26,8 @@ const Dashboard = () => {
     const [economicOutput, setEconomicOutput] = useState();
     const [longData, setLongData] = useState();
     const [dtColumns, setDTColumns] = useState();
+    const [insights, setInsights] = useState("loading");
+    const [loading, setLoading] = useState(true);
 
     const pieOptions = {
       responsive: true,
@@ -226,6 +233,53 @@ const Dashboard = () => {
       setLongData(topicData);
       setDTColumns(columns);
       }
+    
+    function getInsights(){
+      setLoading(true);
+      const prompt = {
+        contents: [
+          {
+            parts: [
+              {
+                text: `Use these periodic ${topicLabel} metrics data: ${JSON.stringify(
+                  periodicData
+                )}, location based metrics data: ${JSON.stringify(
+                  locationData
+                )}, economic output dat: ${JSON.stringify(
+                  economicOutput
+                )} and provide some key summary in less than 100 words`,
+              },
+            ],
+          },
+        ],
+      };
+      fetch("https://proxy.kwang-5a2.workers.dev", {
+        body: JSON.stringify(prompt),
+        headers: {
+          apiKey: "AIzaSyAWsblnruBZuSzN__qUqh8oK02qgVfj_ew",
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((res) => {
+          console.log(res);
+          // Process your data here
+          if (res.candidates) {
+            setInsights(res.candidates[0].content.parts[0].text);
+          }
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("There was a problem with your fetch operation:", error);
+        });
+    }
+      
 
     useEffect(() => {
       getLocationData();
@@ -233,15 +287,29 @@ const Dashboard = () => {
       getLongData();
       }, [topic]);
 
+    useEffect(()=>{
+      getInsights();
+    }, [periodicData])
+
+      const Modal = () => (
+        <Popup trigger={<button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 disabled:bg-slate-200" disabled={loading}> AI Summary </button>} modal>
+          <div className='px-8 py-10 rounded-md'> 
+            <h1 className='font-bold text-2xl '>AI Insights: </h1>
+            <Markdown remarkPlugins={[remarkGfm]}>{insights}</Markdown> 
+          </div>
+        </Popup>
+      );
     return(
       <div className='mx-10'>
-        <div className='w-1/5'>
+        <div className='w-full flex flex-row justify-between'>
           <Select
               defaultValue={topicList[0]}
               isSearchable={true}
               options={topicList}
               onChange={handleSelectTopic}
           />
+
+          <Modal/>
         </div>
         <div class="inline-grid grid-cols-3 w-fit h-1/2">
           <div >
