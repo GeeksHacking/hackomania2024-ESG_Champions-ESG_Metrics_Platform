@@ -292,7 +292,7 @@ const Dashboard = () => {
     }, [periodicData])
 
       const Modal = () => (
-        <Popup trigger={<button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 disabled:bg-slate-200" disabled={loading}> AI Summary </button>} modal>
+        <Popup trigger={<button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600 disabled:bg-slate-200" disabled={loading}> AI Insights </button>} modal>
           <div className='px-8 py-10 rounded-md'> 
             <h1 className='font-bold text-2xl '>AI Insights: </h1>
             <Markdown remarkPlugins={[remarkGfm]}>{insights}</Markdown> 
