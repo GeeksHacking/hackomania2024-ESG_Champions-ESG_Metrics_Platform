@@ -8,8 +8,6 @@ function AddForm() {
     setSelectedOption(event.target.value);
   };
 
-  console.log("selected option 1: ", typeof selectedOption);
-
   function submitHandler(e) {
     e.preventDefault();
 
@@ -38,16 +36,20 @@ function AddForm() {
     localStorage.setItem("data", JSON.stringify(existingData));
 
     setFormData({});
-
-    console.log(existingData);
   }
+
   useEffect(() => {
     setSelectedOption("carbon");
   }, []);
+
   return (
-    <div>
+    <div className="outline-stone-900">
       <div className="mt-12 flex flex-col w-full max-w-sm mx-auto space-y-4 p-4 bg-white shadow-md rounded-md">
-        <select value={selectedOption} onChange={handleDropdownChange}>
+        <select
+          className="focus:outline-none"
+          value={selectedOption}
+          onChange={handleDropdownChange}
+        >
           <option value="carbon">Carbon</option>
           <option value="energy">Energy</option>
           <option value="water">Water</option>
