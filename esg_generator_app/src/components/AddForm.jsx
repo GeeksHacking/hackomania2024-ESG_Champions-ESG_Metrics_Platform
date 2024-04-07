@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function AddForm() {
   const [formData, setFormData] = useState({});
@@ -7,6 +7,8 @@ function AddForm() {
   const handleDropdownChange = (event) => {
     setSelectedOption(event.target.value);
   };
+
+  console.log("selected option 1: ", typeof selectedOption);
 
   function submitHandler(e) {
     e.preventDefault();
@@ -39,14 +41,13 @@ function AddForm() {
 
     console.log(existingData);
   }
-
+  useEffect(() => {
+    setSelectedOption("carbon");
+  }, []);
   return (
     <div>
-      <div>
+      <div className="mt-12 flex flex-col w-full max-w-sm mx-auto space-y-4 p-4 bg-white shadow-md rounded-md">
         <select value={selectedOption} onChange={handleDropdownChange}>
-          <option value="" disabled>
-            select form type
-          </option>
           <option value="carbon">Carbon</option>
           <option value="energy">Energy</option>
           <option value="water">Water</option>
@@ -58,7 +59,7 @@ function AddForm() {
         onSubmit={submitHandler}
         className="flex flex-col w-full max-w-sm mx-auto space-y-4 p-4 bg-white shadow-md rounded-md"
       >
-        {selectedOption === "Economic Output" ? null : (
+        {selectedOption === "econ" ? null : (
           <>
             <label className="text-gray-700">Site</label>
             <input
@@ -77,7 +78,7 @@ function AddForm() {
           </>
         )}
 
-        {selectedOption === "Carbon" && (
+        {selectedOption === "carbon" && (
           <>
             <label className="text-gray-700">Scope</label>
             <select
@@ -101,7 +102,7 @@ function AddForm() {
           </>
         )}
 
-        {selectedOption === "Waste" && (
+        {selectedOption === "waste" && (
           <>
             <label className="text-gray-700">Type</label>
             <select
@@ -145,7 +146,6 @@ function AddForm() {
           className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
           value={formData.amount || ""}
           required
-          autoFocus
           min="0"
           step=".01"
           onChange={(e) => {
@@ -159,7 +159,6 @@ function AddForm() {
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           type="submit"
-          disabled={selectedOption === null}
         >
           Add
         </button>
