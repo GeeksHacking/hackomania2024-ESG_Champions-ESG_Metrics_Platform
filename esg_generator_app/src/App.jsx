@@ -5,6 +5,7 @@ import Dashboard from "./components/dashboard";
 import ESGReport from "./components/ESGReport";
 import AddForm from "./components/AddForm";
 import StickyNavBar from "./components/StickyNavBar";
+import References from "./components/Reference";
 
 function App() {
   initLocalData();
@@ -19,6 +20,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />}></Route>
               <Route path="/form" element={<AddForm />}></Route>
               <Route path="/report" element={<ESGReport />}></Route>
+              <Route path="/references" element={<References />}></Route>
             </Routes>
           </div>
         </Router>
