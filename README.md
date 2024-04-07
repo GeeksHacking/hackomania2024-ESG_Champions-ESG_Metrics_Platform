@@ -17,7 +17,7 @@ Install the necessary dependencies required for this web application.
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your Chrome browser.
 
 ## ESG Reporting Resources
 
