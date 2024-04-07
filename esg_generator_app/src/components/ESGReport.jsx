@@ -204,10 +204,9 @@ const ESGReport = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mx-10">
       <h1 className="font-bold pb-10">ESGReport Template</h1>
       <MDEditor value={template} height="75%" onChange={setTemplate} />
-      <button>Export as Word</button>
     </div>
   );
 };
