@@ -15,8 +15,8 @@ function App() {
         <Router>
           <StickyNavBar />
           <div className="pt-20">
-            <Routes>
-              <Route path="/"></Route>
+            <Routes> 
+              <Route path="/" element={<Dashboard />}></Route>
               <Route path="/dashboard" element={<Dashboard />}></Route>
               <Route path="/form" element={<AddForm />}></Route>
               <Route path="/report" element={<ESGReport />}></Route>
